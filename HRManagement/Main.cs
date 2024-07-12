@@ -49,7 +49,7 @@ namespace HRManagement
         }
         private void EmployOrDismissWorkerIfDatePassed()
         {
-            foreach (var worker in workers)
+            foreach (Worker worker in workers)
             {
                 if (worker != null)
                     if (worker.EmploymentDate == null)
@@ -133,17 +133,17 @@ namespace HRManagement
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            var addEditWorker = new EmployEditDismissWorker();
-            addEditWorker.FormClosing += AddEditWorker_FormClosing;
-            addEditWorker.ShowDialog();
+            EmployEditDismissWorker employEditDismissWorker = new EmployEditDismissWorker();
+            employEditDismissWorker.FormClosing += AddEditWorker_FormClosing;
+            employEditDismissWorker.ShowDialog();
         }
 
         private void BtnEditDismiss_Click(object sender, EventArgs e)
         {
-            var addEditWorker = new EmployEditDismissWorker(
+            EmployEditDismissWorker employEditDismissWorker = new EmployEditDismissWorker(
                 Convert.ToUInt32(dgvDiary.SelectedRows[0].Cells[0].Value));
-            addEditWorker.FormClosing += AddEditWorker_FormClosing;
-            addEditWorker.ShowDialog();
+            employEditDismissWorker.FormClosing += AddEditWorker_FormClosing;
+            employEditDismissWorker.ShowDialog();
 
         }
 

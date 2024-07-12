@@ -214,19 +214,17 @@ namespace HRManagement
             Close();
         }
 
-        private void TbFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        private void TbFirstName_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar);
+            tbFirstName.Text = AllowCharacters(tbFirstName.Text);
         }
-
         private void TbLastName_TextChanged(object sender, EventArgs e)
         {
-            tbLastName.Text = RemoveInvalidCharacters(tbLastName.Text);
-            tbLastName.SelectionStart = tbLastName.Text.Length;
+            tbLastName.Text = AllowCharacters(tbLastName.Text);
         }
-        private string RemoveInvalidCharacters(string text)
+        private static string AllowCharacters(string text)
         {
-            return new string(text.Where(c => char.IsLetter(c) || char.IsWhiteSpace(c) || c == '-' || c == '\'' || c == '.' || c == '/').ToArray());
+            return new string(text.Where(c => char.IsLetter(c) || char.IsWhiteSpace(c) || c == '-' || c == '\\' || c == '.' || c == '/').ToArray());
         }
         private void DisableBtnUnknownDismissalDateIfNotEarlierThanToday()
         {
@@ -239,6 +237,8 @@ namespace HRManagement
         {
             DisableBtnUnknownDismissalDateIfNotEarlierThanToday();
         }
+
+
     }
 }
 

@@ -141,7 +141,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(315, 22);
             this.tbFirstName.TabIndex = 16;
-            this.tbFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbFirstName_KeyPress);
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // label1
             // 
